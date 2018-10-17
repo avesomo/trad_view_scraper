@@ -26,24 +26,28 @@ def get_klines(markets, time_frame=Client.KLINE_INTERVAL_4HOUR):
     closing = 0
     for market in markets:
         fig, vax = plt.subplots(1, 1, figsize=(10, 10))
+        # todo - implement start_str into the variables
         for kline in client.get_historical_klines_generator(symbol=market,
                                                             interval=time_frame,
                                                             start_str='1 day ago UTC'):
             print(market, kline)
-            time, open_price, high_price, low_price, close_price = tuple([float(i) for i in kline[:5]])
+            time, open_price, high_price, low_price, close_price, volume = tuple([float(i) for i in kline[:6]])
             if closing < close_price:
                 color = 'g'
             else:
                 color = 'r'
             vax.vlines(time_from_ts(time), low_price, high_price, colors=color, lw=1)
             vax.vlines(time_from_ts(time), open_price, close_price, colors=color, lw=10)
+            # todo need to normalize the prices and volume to match scales
+            # vax.vlines(time_from_ts(time), 0 , volume/100000, colors=color, lw=10)
             closing = close_price
-            # vax.ylim(low/10, 10*high)
         vax.set_xlabel('time')
         vax.set_title(f'Vertical lines demo {market}')
+        # todo - rescale x-axis labels
         plt.show()
 
 
+# sample input
 markets = get_coins_list()[3:4]
 get_klines(markets, Client.KLINE_INTERVAL_30MINUTE)
 st_ts = client.get_server_time()['serverTime']

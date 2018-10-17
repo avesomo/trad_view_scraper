@@ -3,3 +3,4 @@ pandas==0.23.4
 python-binance==0.7.0
 regex==2018.8.29
 requests==2.19.1
+matplotlib==2.2.3
