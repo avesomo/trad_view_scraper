@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 import numpy as np
-from bin_scraper import get_coins_list
+from help_functions import get_coins_list
 
 
 # unchangeable data from TradingView
@@ -46,8 +46,7 @@ def get_ticks(markets, tickers_indexes, time_frames):
             for_removal.append(market)
             continue
 
-    print(f'Removing non-existent markets:')
-    print(for_removal)
+    print(f'Removing non-existent markets:\n {for_removal}')
     for i in for_removal:
         markets.remove(i)
 
@@ -61,8 +60,8 @@ def get_ticks(markets, tickers_indexes, time_frames):
 
 
 # sample input
-tickers_indexes = [0, 1, 2]
-time_frames = ['240', '15']
-markets = get_coins_list()[:20]
-df_ticks = get_ticks(markets, tickers_indexes, time_frames)
-print(df_ticks)
+# tickers_indexes = [0, 1, 2]
+# time_frames = ['240', '15']
+# markets = get_coins_list()[:20]
+# df_ticks = get_ticks(markets, tickers_indexes, time_frames)
+# print(df_ticks)
