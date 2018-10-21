@@ -2,7 +2,6 @@ import requests
 import json
 import pandas as pd
 import numpy as np
-from help_functions import get_coins_list
 
 
 # unchangeable data from TradingView
@@ -36,9 +35,9 @@ def get_ticks(markets, tickers_indexes, time_frames):
                 }
                 resp = requests.post(url, headers=headers, data=json.dumps(payload)).json()
                 res = [(ticks[i], resp["data"][0]["d"][i]) for i in tickers_indexes]
-                print(market, timeframe, res)
+                # print(market, timeframe, res)
                 for i in res:
-                        array_like.append(i[1])
+                    array_like.append(i[1])
                 result[timeframe] = res
             final_dict[market] = result
 

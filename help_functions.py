@@ -13,15 +13,20 @@ class Kline:
         self.low_price = float(low_price)
         self.close_price = float(close_price)
         self.volume = float(volume)
-        self.close_time = int(close_time)
+        self.close_time = close_time
         self.quote = float(quote)
         self.no_trades = int(no_trades)
         self.taker_base = float(taker_base)
         self.taker_quote = float(taker_quote)
         self.ignore_val = int(ignore_val)
         self.high_price = float(high_price)
-        self.open_t = int(open_time)
+        self.open_t = open_time
         self.open_price = float(open_price)
+
+    def get_attributes(self):
+        return time_from_ts(self.open_t), self.open_price, self.high_price, self.low_price,\
+               self.close_price, self.volume, time_from_ts(self.close_time), self.quote,\
+               self.no_trades, self.taker_base, self.taker_quote, self.ignore_val
 
 
 def time_from_ts(timestamp, timespec='minutes'):
@@ -36,10 +41,15 @@ def get_coins_list():
 
 
 def print_ichimoku(klines, market, axis, conv_period=20, base_period=60, span2period=120, displacement=30):
-    # todo - rescale X-axis and redo subplots - they are misleading atm
+    # todo - rescale X-axis, redo X/Y-axis labels
     # start = klines[0].open_t
     # end = klines[-1].open_t
     time = get_time(klines)
+    print(f'Generating an ichimoku cloud plot for {market}...')
+    # todo - if the data lacks information to draw ichimoku it breaks
+    # todo - implement a try-expect part
+
+    # defining ichimoku values
     conversion_line = ((get_period_highs(conv_period, klines)
                        + get_period_lows(conv_period, klines))
                        / 2)
@@ -51,10 +61,13 @@ def print_ichimoku(klines, market, axis, conv_period=20, base_period=60, span2pe
                 + get_period_lows(span2period, klines))
                 / 2)
     chikou = get_chikou(displacement, klines)
+
+    # plotting lines
     plt.plot(time[:len(chikou)], chikou, '-', linewidth=0.5, markersize=1, color='g')
     plt.plot(time[-len(conversion_line):], conversion_line, '-', linewidth=0.5, markersize=1, color='b')
     plt.plot(time[-len(base_line):], base_line, '-', linewidth=0.5, markersize=1, color='r')
 
+    # plotting cloud
     is_greater = senkou_a[-len(senkou_b):] > senkou_b
     green_a = senkou_a[-len(senkou_b):]
     green_b = senkou_b
@@ -64,8 +77,8 @@ def print_ichimoku(klines, market, axis, conv_period=20, base_period=60, span2pe
 
     axis.set_xlabel('time')
     axis.set_title(f'{market} market')
-    # todo - rescale x-axis labels
     plt.show()
+    return print(f'Ichimoku cloud for {market} has been plotted.')
 
 
 def get_period_highs(period, klines):
