@@ -6,43 +6,49 @@ from sql import create_markets_databases, insert_klines
 
 
 #sample input
-time_frame = ('4H',)
-time_interval = ('3 month ago UTC',)
-markets_filtered = get_coins_list()[4:6]
-create_markets_databases(markets_filtered, time_frame)
+time_frame = ('1H',)
+time_interval = ('2 month ago UTC',)
+markets_filtered = get_coins_list()
+idx = markets_filtered.index('BLZBTC')
+markets_filtered = get_coins_list()[idx: idx+1]
+# create_markets_databases(markets_filtered, time_frame)
 
 
-# todo - simplify time_frame inputs
 def get_klines(markets, frame=time_frame, interval=time_interval):
     for tf in frame:
         for ti in interval:
             closing = 0
             for market in markets:
+                if market == 'HSRBTC' or market == 'VENBTC' or market == 'RPXBTC':
+                    continue
                 tf_t = getattr(Client, time_dict[tf])
-                db_name = f'{market}_{tf_t}'.lower()
                 all_klines = []
                 fig, vax = plt.subplots(1, 1, figsize=(30, 10))
-                # todo - implement start_str into the variables
                 print(f'Generating data for {market}_{tf}...')
+                # todo - get data from sql server - if the data is obsolete, update from the exchange
                 for kline in client.get_historical_klines_generator(symbol=market,
                                                                     interval=tf_t,
                                                                     start_str=ti):
-
                     wick = Kline(*kline)
                     all_klines.append(wick)
-                    # todo-print bars function
-                    if closing < wick.close_price:
-                        color = 'g'
-                    else:
-                        color = 'r'
-                    vax.vlines(int(wick.open_t), wick.low_price, wick.high_price, colors=color, lw=1)
-                    vax.vlines(int(wick.open_t), wick.open_price, wick.close_price, colors=color, lw=10)
-                    # todo need to normalize the prices and volume to match scales
-                    # vax.vlines(time_from_ts(time), 0 , volume/100000, colors=color, lw=10)
+                    paint_wicks(wick, closing, vax)
                     closing = wick.close_price
                 print(f'{market}_{tf} data has been generated.')
-                insert_klines(all_klines, db_name)
                 print_ichimoku(all_klines, market, vax)
+                fig.savefig(f'plots//{market}_{tf}.png', bbox_inches='tight')
+                # db_name = f'{market}_{tf_t}'.lower()
+                # insert_klines(all_klines, db_name)
+
+
+def paint_wicks(wick, closing, axis):
+    if closing < wick.close_price:
+        color = 'g'
+    else:
+        color = 'r'
+    axis.vlines(int(wick.open_t), wick.low_price, wick.high_price, colors=color, lw=1)
+    axis.vlines(int(wick.open_t), wick.open_price, wick.close_price, colors=color, lw=10)
+    # todo need to normalize the prices and volume to match scales
+    # axis.vlines(time_from_ts(time), 0 , volume/100000, colors=color, lw=10)
 
 
 # sample input

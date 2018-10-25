@@ -80,3 +80,26 @@ def insert_klines(klines, db_name):
     finally:
         if conn is not None:
             conn.close()
+
+
+def get_klines_from_sql(db_name):
+    # todo - add only if such a kline doesnt exist - check the 'latest
+    # todo - row' and compare it to current_time
+    conn = None
+    try:
+        params = config()
+        conn = psycopg2.connect(**params)
+        cur = conn.cursor()
+        cur.execute(f"Select * FROM {db_name} LIMIT 0")
+        columns = ', '.join([desc[0] for desc in cur.description][1:])
+        cur.execute(f"SELECT {columns} FROM {db_name} ORDER BY open_time ASC")
+        rows = cur.fetchall()
+        print("The number of rows fetched: ", cur.rowcount)
+        for row in rows:
+            print(type(row), row)
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
