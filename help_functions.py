@@ -40,17 +40,10 @@ def get_coins_list():
     return coins
 
 
-def print_ichimoku(klines, market, axis, conv_period=20, base_period=60, span2period=120, displacement=30,
+def print_ichimoku(klines, time, axs, conv_period=20, base_period=60, span2period=120, displacement=30,
                    plot_lines=False, plot_cloud=True):
-    # todo - rescale X-axis, redo X/Y-axis labels
-    # start = klines[0].open_t
-    # end = klines[-1].open_t
-    time = get_time(klines)
     dist = time[1] - time[0]
     time_new = add_time(time, dist, displacement)
-    print(f'Generating an ichimoku cloud plot for {market}...')
-    # todo - if the data lacks information to draw ichimoku it breaks
-    # todo - implement a try-expect part
 
     # defining ichimoku values
     conversion_line = ((get_period_highs(conv_period, klines)
@@ -64,42 +57,27 @@ def print_ichimoku(klines, market, axis, conv_period=20, base_period=60, span2pe
                 + get_period_lows(span2period, klines))
                 / 2)
     chikou = get_chikou(displacement, klines)
+    is_greater = senkou_a[-len(senkou_b):] >= senkou_b
+    time_a = time_new[-len(senkou_b):]
     # plotting lines - optional
     if plot_lines:
-        plt.plot(time[:len(chikou)], chikou, '-', linewidth=0.5, markersize=1, color='g')
-        plt.plot(time[-len(conversion_line):], conversion_line, '-', linewidth=0.5, markersize=1, color='b')
-        plt.plot(time[-len(base_line):], base_line, '-', linewidth=0.5, markersize=1, color='r')
-        plt.plot(time[:len(chikou)], chikou, '-', linewidth=0.5, markersize=1, color='g')
+        axs[0].plot(time[:len(chikou)], chikou, '-', linewidth=1, markersize=1, color='g')
+        axs[0].plot(time[-len(conversion_line):], conversion_line, '-', linewidth=1, markersize=1, color='b')
+        axs[0].plot(time[-len(base_line):], base_line, '-', linewidth=1, markersize=1, color='r')
+        axs[0].plot(time[:len(chikou)], chikou, '-', linewidth=1, markersize=1, color='g')
 
     # plotting cloud
     if plot_cloud:
-        is_greater = senkou_a[-len(senkou_b):] >= senkou_b
-        time_a = time_new[-len(senkou_b):]
-        plt.fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b, where=is_greater, color='g', alpha=0.1)
-        plt.fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b, where=~is_greater, color='r', alpha=0.1)
-        plt.plot(time_new[-len(senkou_a):], senkou_a, '-', linewidth=0.5, markersize=1, color='g')
-        plt.plot(time_new[-len(senkou_b):], senkou_b, '-', linewidth=0.5, markersize=1, color='r')
+        axs[0].fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b, where=is_greater, color='g', alpha=0.1)
+        axs[0].fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b, where=~is_greater, color='r', alpha=0.1)
+        axs[0].plot(time_new[-len(senkou_a):], senkou_a, '-', linewidth=0.5, markersize=1, color='g')
+        axs[0].plot(time_new[-len(senkou_b):], senkou_b, '-', linewidth=0.5, markersize=1, color='r')
 
-    i = 1
-    if senkou_a[-i] > senkou_b[-i]:
-        while senkou_a[-i] > senkou_b[-i]:
-            i += 1
-        cross_time = time_a[-i+1]
-    else:
-        while senkou_b[-i] > senkou_a[-i]:
-            i += 1
-        cross_time = time_a[-i+1]
+    if cloud_cross(senkou_a, senkou_b, displacement, time, time_a, axs):
+        print(f"Ichimoku cloud crossing soon!!!")
 
-    plt.axvline(cross_time)
-    if cross_time > time[-1]:
-        print("Ichimoku cloud crossing soon!!!")
-        # todo - do things like send e-mail, compare to TV indicators (or calculate them here)
-    axis.set_xlabel('time')
-    axis.set_title(f'{market} market')
-    plt.show()
-    return print(f'Ichimoku cloud for {market} has been plotted.')
+    # plt.show()ts//{market}_{tf}.png', bbox_inches='tight')
 
-# def check_for_crossings(senkou_a, senkou_b):
 
 # remove one of these functions below
 def get_period_highs(period, klines):
@@ -121,7 +99,6 @@ def get_period_lows(period, klines):
         for j in klines[i - period:i]:
             values_low.append(j.low_price)
         period_low.append(np.min(values_low))
-    print(period_low)
     return np.array(period_low)
 
 
@@ -140,6 +117,28 @@ def add_time(time_list, time_amount, repeater):
         time_list = np.append(time_list, time_list[-1] + time_amount)
     return time_list
 
-    # 1440000
 
+def cloud_cross(senkou_a, senkou_b, displacement, time, time_a, axs):
+    i = 1
+    if senkou_a[-i] > senkou_b[-i]:
+        while senkou_a[-i] > senkou_b[-i]:
+            i += 1
+            if i == displacement+10:
+                i = None
+                break
+        # cross_time = time_a[-i+1]
+    else:
+        while senkou_b[-i] > senkou_a[-i]:
+            i += 1
+            if i == displacement+10:
+                i = None
+                break
+    if i:
+        cross_time = time_a[-i+1]
+        axs[0].axvline(cross_time)
 
+        if cross_time > time[-1]:
+            return True
+        else:
+            return False
+            # todo - do things like send e-mail, compare to TV indicators (or calculate them here)

@@ -55,6 +55,10 @@ def create_markets_databases(markets, interval=('4H', )):
             db_name = f'{market}_{ti}'.lower()
             if not db_exists(db_name):
                 create_db(db_name)
+                print(f"Database for {db_name} has been created.")
+            else:
+                print(f"Database {db_name} already exists.")
+
 
 
 def insert_klines(klines, db_name):
