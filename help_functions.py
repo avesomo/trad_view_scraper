@@ -3,8 +3,14 @@ from binance.client import Client
 from config import API_KEY, API_SECRET
 import matplotlib.pyplot as plt
 import numpy as np
+import time
+import os
+import shutil
+
 
 client = Client(API_KEY, API_SECRET)
+calls_list = []
+displacement = 30
 
 
 class Kline:
@@ -40,7 +46,7 @@ def get_coins_list():
     return coins
 
 
-def print_ichimoku(klines, time, axs, conv_period=20, base_period=60, span2period=120, displacement=30,
+def print_ichimoku(klines, time, axs, market, conv_period=20, base_period=60, span2period=120, displacement=30,
                    plot_lines=False, plot_cloud=True):
     dist = time[1] - time[0]
     time_new = add_time(time, dist, displacement)
@@ -59,6 +65,9 @@ def print_ichimoku(klines, time, axs, conv_period=20, base_period=60, span2perio
     chikou = get_chikou(displacement, klines)
     is_greater = senkou_a[-len(senkou_b):] >= senkou_b
     time_a = time_new[-len(senkou_b):]
+    current_close_price = klines[-1].close_price
+    current_open_price = np.mean([k.open_price for k in klines[-3:]])
+
     # plotting lines - optional
     if plot_lines:
         axs[0].plot(time[:len(chikou)], chikou, '-', linewidth=1, markersize=1, color='g')
@@ -73,14 +82,174 @@ def print_ichimoku(klines, time, axs, conv_period=20, base_period=60, span2perio
         axs[0].plot(time_new[-len(senkou_a):], senkou_a, '-', linewidth=0.5, markersize=1, color='g')
         axs[0].plot(time_new[-len(senkou_b):], senkou_b, '-', linewidth=0.5, markersize=1, color='r')
 
-    if cloud_cross(senkou_a, senkou_b, displacement, time, time_a, axs):
-        print(f"Ichimoku cloud crossing soon!!!")
+    cross = cloud_cross(senkou_a, senkou_b, displacement, time_a, axs)
 
-    # plt.show()ts//{market}_{tf}.png', bbox_inches='tight')
+    # senkous crossing and checks if the nearby cloud is thin enough
+    if cross and is_close(senkou_a, senkou_b, current_open_price, current_close_price):
+        if rad_indicator(senkou_a, senkou_b, cross, current_close_price) < 0.05:
+            print(f'{market}\'s cloud is on X-roads and the cloud is thin!')
+            calls_list.append(market)
+            return market
+
+    # cloud thin and price close to the cloud
+    a = cloud_thickness(current_open_price, current_close_price, senkou_a, senkou_b, displacement)
+    b = is_close(senkou_a, senkou_b, current_open_price, current_close_price)
+    if a < 0.018 or b:
+        print(f'{market}\'s cloud is thin and the price is close to it!')
+        calls_list.append(market)
+        return market
 
 
-# remove one of these functions below
+def plot_wicks(klines, axs, time):
+    # function plots markets price diagram as bars(wicks)
+    close_prices = [w.close_price for w in klines]
+    a = np.array(close_prices[:-1])
+    b = np.array(close_prices[1:])
+    bool_filter = np.insert(a > b, 0, True)
+    low_price, high_price, open_price, close_price = [], [], [], []
+
+    [(low_price.append(w.low_price),
+     high_price.append(w.high_price),
+     close_price.append(w.close_price),
+     open_price.append(w.open_price))
+     for w in klines]
+
+    time_np = np.array(time)
+    low_price = np.array(low_price)
+    high_price = np.array(high_price)
+    open_price = np.array(open_price)
+    close_price = np.array(close_price)
+    axs[0].vlines(time_np[bool_filter], low_price[bool_filter], high_price[bool_filter], color='r', lw=1)
+    axs[0].vlines(time_np[bool_filter], open_price[bool_filter], close_price[bool_filter], color='r', lw=10)
+    axs[0].vlines(time_np[~bool_filter], low_price[~bool_filter], high_price[~bool_filter], color='g', lw=1)
+    axs[0].vlines(time_np[~bool_filter], open_price[~bool_filter], close_price[~bool_filter], color='g', lw=10)
+    return bool_filter
+
+
+def plot_vol(klines, axs, vol, bool_filter):
+    # function plots volume on a figure below the main one
+    max_val = np.max(vol)
+    x, y = [], []
+    [(x.append(w.open_t), y.append(w.volume/max_val)) for w in klines]
+    axs[1].set_ylabel('volume', fontsize=14)
+    axs[1].vlines(np.array(x)[bool_filter], 0, np.array(y)[bool_filter], color='r', lw=5)
+    axs[1].vlines(np.array(x)[~bool_filter], 0, np.array(y)[~bool_filter], color='g', lw=5)
+    axs[1].set_ylim([0, 1])
+
+
+def cloud_cross(senkou_a, senkou_b, displacement, time_a, axs):
+    # function checks if the senkou_a(green) and senkou_b(red)
+    # are soon crossing each other (or recently did)
+    i = -20
+    if senkou_a[i] > senkou_b[i]:
+        while senkou_a[i] > senkou_b[i]:
+            i -= 1
+            if i == -displacement-12:
+                i = None
+                break
+    else:
+        while senkou_b[i] > senkou_a[i]:
+            i -= 1
+            if i == -displacement-12:
+                i = None
+                break
+    if i:
+        cross_idx = i+1
+        axs[0].axvline(time_a[cross_idx])
+        return cross_idx
+
+
+def rad_indicator(senkou_a, senkou_b, point, close_price, steps=6):
+    # func checks if the cloud is thin locally at defined point
+    cloud_mean_r = np.mean(senkou_a[point:point+steps] - senkou_b[point:point+steps])
+    cloud_mean_l = np.mean(senkou_a[point-steps:point] - senkou_b[point-steps:point])
+    return min(cloud_mean_r/close_price, cloud_mean_l/close_price)
+
+
+def cloud_thickness(open_price, close_price, senkou_a, senkou_b, disp, steps=3):
+    # returns a minimum value of thickness as a % of coins current_price for further steps(wicks)
+    thicknesses = []
+    price = (open_price + close_price) / 2
+    for i in range(1, steps+1):
+        thk = abs(senkou_a[-disp+i] - senkou_b[-disp+i])
+        thicknesses.append(thk)
+    return min(thicknesses)/price
+
+
+def is_close(senkou_a, senkou_b, open_price, close_price, point=displacement):
+    # checks if the current price is close to the cloud
+    limiter = max(senkou_a[-point], senkou_b[-point])
+    price = (open_price+close_price)/2
+    if open_price >= limiter:
+        if (abs(open_price - senkou_a[-point]) < 0.025 * price) | (
+                abs(open_price - senkou_b[-point]) < 0.025 * price):
+            return True
+        else:
+            return False
+    else:
+        if (abs(close_price - senkou_a[-point]) < 0.025 * price) | (
+                abs(close_price - senkou_b[-point]) < 0.025 * price):
+            return True
+        else:
+            return False
+
+
+def plot_gmma(axs, klines, time):
+    # function plots gmma-indicator based on given emas periods
+    emas_g = [3, 5, 8, 10, 12, 15]
+    emas_r = [30, 35, 40, 45, 50, 60]
+    for period in emas_g:
+        color = 'g'
+        axs[0].plot(time[period:], EMA(klines, period), '-', linewidth=1, markersize=1, color=color)
+    for period in emas_r:
+        color = 'r'
+        axs[0].plot(time[period:], EMA(klines, period), '-', linewidth=1, markersize=1, color=color)
+
+
+def SMA(klines, period):
+    # func calculates and returns a SMA list-object
+    period_sma = []
+    for i in range(period-1, len(klines)):
+        values_sma = []
+        for k in klines[i-period+1:i]:
+            values_sma.append(k.close_price)
+        period_sma.append(np.mean(values_sma))
+    return period_sma
+
+
+def EMA(klines, period):
+    # func calculates and returns an EMA list-object
+    sma = SMA(klines, period)[0]
+    multiplier = (2 / (period + 1))
+    ema_values = []
+    first_val = klines[period]
+    ema_previous = (first_val.close_price - sma) * multiplier + sma
+    ema_values.append(ema_previous)
+    for i in range(period+1, len(klines)):
+        ema_current = (klines[i].close_price - ema_previous) * multiplier + ema_previous
+        ema_values.append(ema_current)
+        ema_previous = ema_current
+    return ema_values
+
+
+def organize_calls(calls):
+    # function moves called coins to seperate folders
+    source_path = os.path.join(os.getcwd(), 'plots')
+    files = os.listdir(source_path)
+    current_time = time.strftime("%Y-%m-%d %H_%M")
+    os.chdir(source_path)
+    for coin in calls:
+        directory = f'{current_time}'
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        for f in files:
+            if f.startswith(f'{coin}'):
+                shutil.move(f'{f}', os.path.join(directory, f))
+
+
+# todo - could recreate the function to match both highs/lows and other stuff
 def get_period_highs(period, klines):
+    # function returns the lowest price value at given (past) period
     period_high = []
     for i in range(period, len(klines)):
         values_high = []
@@ -92,6 +261,7 @@ def get_period_highs(period, klines):
 
 
 def get_period_lows(period, klines):
+    # function returns the lowest price value at given (past) period
     period_low = []
     for i in range(period, len(klines)):
         values_low = []
@@ -103,42 +273,40 @@ def get_period_lows(period, klines):
 
 
 def get_chikou(period, klines):
+    # function returns chikou values (closing prices at given period)
     values_chi = [i.close_price for i in klines[period:]]
     return np.array(values_chi)
 
 
 def get_time(klines):
+    # function returns time values for given data
     time_val = [i.open_t for i in klines]
     return np.array(time_val)
 
 
 def add_time(time_list, time_amount, repeater):
+    # function adds time at given displacement - necessary for proper broadcasting
     for _ in range(repeater):
         time_list = np.append(time_list, time_list[-1] + time_amount)
     return time_list
 
 
-def cloud_cross(senkou_a, senkou_b, displacement, time, time_a, axs):
-    i = 1
-    if senkou_a[-i] > senkou_b[-i]:
-        while senkou_a[-i] > senkou_b[-i]:
-            i += 1
-            if i == displacement+10:
-                i = None
-                break
-        # cross_time = time_a[-i+1]
-    else:
-        while senkou_b[-i] > senkou_a[-i]:
-            i += 1
-            if i == displacement+10:
-                i = None
-                break
-    if i:
-        cross_time = time_a[-i+1]
-        axs[0].axvline(cross_time)
+def chooma_indicator():
+    # check if open_price is a little more than conv_line (more than 0.2% and less than 0.4% of open price
+    pass
 
-        if cross_time > time[-1]:
-            return True
-        else:
-            return False
-            # todo - do things like send e-mail, compare to TV indicators (or calculate them here)
+
+def baboo_indicator():
+    # while True
+        # todo-making new checks
+        # def buy_walls_emerging
+        # def buy_walls_dropping
+        # def sell_walls_emerging
+        # def sell_walls dropping
+    pass
+
+
+def vol_check():
+    # whats the 24h/4h/1h vol increase/decrease
+    pass
+
