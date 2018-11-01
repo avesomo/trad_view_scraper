@@ -6,6 +6,10 @@ import numpy as np
 import time
 import os
 import shutil
+from datetime import datetime
+import openpyxl
+from config import time_dict
+
 
 
 client = Client(API_KEY, API_SECRET)
@@ -310,3 +314,43 @@ def vol_check():
     # whats the 24h/4h/1h vol increase/decrease
     pass
 
+
+def update_excel(filename, coin_list):
+    # creating/opening excel file containing current prices
+    # the excel file will later be helpful at checking if the calls are working
+    if os.path.isfile(filename):
+        print('file exists')
+        wb = openpyxl.load_workbook(filename)
+        ws = wb.active
+    else:
+        print('File doesnt exist. Creating new one called coins.xlsx')
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = 'Coins_table'
+        ws['A1'] = 'Date/Coins'
+        wb.save(filename)
+
+    # data input to excel
+    last_row = ws.max_row
+    last_col = ws.max_column
+
+    ws[f'A{last_row+1}'] = datetime.now()
+    coins = {key.value: value for value, key in enumerate(list(ws.rows)[0], 2)}
+    i = 1
+    for coin in coin_list:
+
+        bin_data = list(client.get_historical_klines_generator(symbol=f'{coin}BTC',
+                                                               interval=getattr(Client, time_dict['4H']),
+                                                               start_str='4 hours ago UTC'))[-1]
+        data = Kline(*bin_data)
+        if coin not in coins.keys():
+            print(f'{coin} doesnt exist yet in a table - adding new column...')
+            ws.cell(row=1, column=last_col+i).value = coin
+            ws.cell(row=last_row+1, column=last_col+i).value = (data.open_price + data.close_price) / 2
+            i += 1
+        else:
+            ws.cell(row=last_row+1, column=coins[coin]-1).value = (data.open_price+data.close_price)/2
+
+    wb.save(filename)
+    wb.close()
+    return print(f"Excel file {filename} created/updated.")
