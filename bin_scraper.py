@@ -10,8 +10,8 @@ from datetime import datetime
 
 #sample input
 t_now = datetime.now()
-time_frame = ('4H',)
-time_interval = ('1 month ago UTC',)
+time_frame = ('4H', '1D')
+time_interval = ('2 month ago UTC',)
 markets_filtered = get_coins_list()
 
 # # uncomment if you want to have a specific coin plot only

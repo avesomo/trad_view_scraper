@@ -99,7 +99,7 @@ def print_ichimoku(klines, time, axs, market, conv_period=20, base_period=60, sp
     a = cloud_thickness(current_open_price, current_close_price, senkou_a, senkou_b, displacement)
     b = is_close(senkou_a, senkou_b, current_open_price, current_close_price)
     if a < 0.018 or b:
-        print(f'{market}\'s cloud is thin and the price is close to it!')
+        print(f'{market}\'s cloud is thin and/or the price is close to it!')
         calls_list.append(market)
         return market
 
@@ -185,14 +185,14 @@ def is_close(senkou_a, senkou_b, open_price, close_price, point=displacement):
     limiter = max(senkou_a[-point], senkou_b[-point])
     price = (open_price+close_price)/2
     if open_price >= limiter:
-        if (abs(open_price - senkou_a[-point]) < 0.025 * price) | (
-                abs(open_price - senkou_b[-point]) < 0.025 * price):
+        if (abs(open_price - senkou_a[-point]) < 0.02 * price) | (
+                abs(open_price - senkou_b[-point]) < 0.02 * price):
             return True
         else:
             return False
     else:
-        if (abs(close_price - senkou_a[-point]) < 0.025 * price) | (
-                abs(close_price - senkou_b[-point]) < 0.025 * price):
+        if (abs(close_price - senkou_a[-point]) < 0.02 * price) | (
+                abs(close_price - senkou_b[-point]) < 0.02 * price):
             return True
         else:
             return False
@@ -339,9 +339,9 @@ def update_excel(filename, coin_list):
     i = 1
     for coin in coin_list:
 
-        bin_data = list(client.get_historical_klines_generator(symbol=f'{coin}BTC',
+        bin_data = list(client.get_historical_klines_generator(symbol=f'{coin}',
                                                                interval=getattr(Client, time_dict['4H']),
-                                                               start_str='4 hours ago UTC'))[-1]
+                                                               start_str='8 hours ago UTC'))[-1]
         data = Kline(*bin_data)
         if coin not in coins.keys():
             print(f'{coin} doesnt exist yet in a table - adding new column...')
