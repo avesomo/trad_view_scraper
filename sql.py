@@ -1,5 +1,6 @@
 import psycopg2
 from config import config
+import numpy as np
 
 
 def db_exists(db_name):
@@ -31,7 +32,20 @@ def create_db(db_name):
             no_trades INTEGER NOT NULL,
             taker_base FLOAT NOT NULL,
             taker_quote FLOAT NOT NULL,
-            ignore_val INTEGER NOT NULL
+            ignore_val INTEGER NOT NULL,
+            ema12 FLOAT,
+            ema26 FLOAT,
+            ema50 FLOAT,
+            ema200 FLOAT,
+            short_gmma FLOAT,
+            long_gmma FLOAT,
+            d_gmmas FLOAT,   
+            senkou_a FLOAT,
+            senkou_b FLOAT,
+            d_senkou FLOAT,
+            macd FLOAT,
+            rsi FLOAT,
+            local_cloud FLOAT
         )"""]
     conn = None
     try:
@@ -60,11 +74,13 @@ def create_markets_databases(markets, interval=('4H', )):
                 print(f"Database {db_name} already exists.")
 
 
-def insert_klines(klines, db_name):
+def insert_klines(klines, db_name, indicators):
     # todo - add only if such a kline doesnt exist - check the 'latest
     # todo - row' and compare it to current_time
     conn = None
     transformed = [i.get_attributes() for i in klines]
+    values = np.c_[transformed[-len(indicators):], indicators]
+    print(f'vals: {values}')
     try:
         params = config()
         conn = psycopg2.connect(**params)
@@ -72,8 +88,8 @@ def insert_klines(klines, db_name):
         cur.execute(f"Select * FROM {db_name} LIMIT 0")
         columns = ', '.join([desc[0] for desc in cur.description][1:])
         print(f'Inserting klines data into sql table {db_name.upper()}...')
-        for kline in transformed:
-            sql = f"""INSERT INTO %s (%s) VALUES %s""" % (db_name, columns, kline)
+        for val in values:
+            sql = f"""INSERT INTO %s (%s) VALUES %s""" % (db_name, columns, tuple(val))
             cur.execute(sql)
             conn.commit()
         print(f'{db_name.upper()} table data has been updated.\n')
