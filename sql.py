@@ -60,7 +60,6 @@ def create_markets_databases(markets, interval=('4H', )):
                 print(f"Database {db_name} already exists.")
 
 
-
 def insert_klines(klines, db_name):
     # todo - add only if such a kline doesnt exist - check the 'latest
     # todo - row' and compare it to current_time

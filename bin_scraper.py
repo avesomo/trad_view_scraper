@@ -1,5 +1,4 @@
-from help_functions import get_coins_list, client, Kline, print_ichimoku, get_time, calls_list, plot_gmma, plot_wicks, \
-                           plot_vol, organize_calls, update_excel
+from help_functions import *
 from config import time_dict
 from binance.client import Client
 import matplotlib.pyplot as plt
@@ -8,41 +7,21 @@ import numpy as np
 from datetime import datetime
 
 
-#sample input
-t_now = datetime.now()
-time_frame = ('4H', '1D')
-time_interval = ('2 month ago UTC',)
-markets_filtered = get_coins_list()
-
-# # uncomment if you want to have a specific coin plot only
-# idx = markets_filtered.index('NCASHBTC')
-# markets_filtered = get_coins_list()[idx:idx+1]
-
-# part purely for future decisions ;)
-# moon_coins = ['VIBE', 'VIB', 'FUEL', 'WPR', 'POWR', 'CND', 'FUN',
-#               'ADX', 'WAVES', 'APPC', 'MTH', 'STORM', 'MOD', 'THETA',
-#               'REQ', 'TNT', 'DATA', 'DNT', 'STORJ', 'ZIL', 'LEND', 'CLOAK',
-#               'SNGLS']
-# coinz = ['ADX', 'AMB', 'ARN', 'BQX', 'BRD', 'BTG', 'DASH', 'DGD', 'EVX', 'FUN', 'IOST', 'NANO', 'OAX', 'POWR', 'REQ',
-#          'SALT', 'STRAT', 'VIBE', 'ZIL']
-
-# optional - todo - focusing first on the calls - will later implement a SQLdb<>program_data exchange
-# create_markets_databases(markets_filtered, time_frame)
+t0 = datetime.now()
+# todo-if too short interval the program hangs itself (not enough information to plot ichi cloud
+TIME_FRAME = ('1H', )
+TIME_INTERVAL = ('6 month ago UTC', )
 
 
-def get_klines(markets, frame=time_frame, interval=time_interval, include_vol=False, insert_data=False, gmma=True):
+def get_klines(markets, frame=TIME_FRAME, interval=TIME_INTERVAL,
+               include_vol=False, insert_data=True, gmma=True, incl_macd=True, save_fig=True, incl_rsi=True):
     for tf in frame:
         for ti in interval:
             for market in markets:
                 tf_t = getattr(Client, time_dict[tf])
                 all_klines = []
 
-                # todo - no_vol function doesnt work so far as axs items do not support indexing if less than 2 axs
-                if include_vol:
-                    fig, axs = plt.subplots(2, 1, figsize=(30,10), gridspec_kw = {'height_ratios':[5, 1]}, sharex=True)
-                else:
-                    fig, axs = plt.subplots(1, 1, figsize=(30, 10))
-
+                # todo - no_vol function doesnt work so far as axs items do not support indexing if less than 2 axES
                 print(f'Generating data for {market}_{tf}...')
                 # todo - get data from sql server - if the data is obsolete, update from the exchange
                 data = client.get_historical_klines_generator(symbol=market,
@@ -50,13 +29,22 @@ def get_klines(markets, frame=time_frame, interval=time_interval, include_vol=Fa
                                                               start_str=ti)
                 [all_klines.append(Kline(*kline)) for kline in data]
                 time = get_time(all_klines)
-                bool_filter = plot_wicks(all_klines, axs, time)
                 print(f'{market}_{tf} data has been generated.')
+                subplots_no = np.sum([include_vol, incl_macd, incl_rsi, 1])
+                # todo-number of drawings is hardcoded now - rework
+                if include_vol:
+                    fig, axs = plt.subplots(subplots_no, 1, figsize=(len(all_klines)/8, 10),
+                                                  gridspec_kw ={'height_ratios': [5, 1, 1, 1]},
+                                                  sharex=True)
+                else:
+                    fig, axs = plt.subplots(1, 1, figsize=(len(all_klines)/8, 10))
+
+                bool_filter = plot_wicks(all_klines, axs, time)
 
                 try:
                     print(f'Generating an ichimoku cloud plot for {market}...')
-                    print_ichimoku(all_klines, time, axs, market, plot_lines=True)
-                    print(f'Ichimoku cloud for {market} has been plotted.\n')
+                    senkou_a, senkou_b, d_senkou = plot_ichimoku(all_klines, time, axs, market, plot_lines=True)
+                    print(f'Ichimoku cloud for {market} has been plotted.')
                 except ValueError as e:
                     print(f'Something went wrong. Error: {e}\n')
                     continue
@@ -64,43 +52,105 @@ def get_klines(markets, frame=time_frame, interval=time_interval, include_vol=Fa
                     print(f'Something went wrong. Error: {e}\n')
                     continue
 
+                current_close = all_klines[-1].close_price
                 if include_vol:
                     vol = np.array([w.volume for w in all_klines])
                     plot_vol(all_klines, axs, vol, bool_filter)
 
                 if gmma:
-                    plot_gmma(axs, all_klines, time)
+                    all_emas = plot_gmma(axs, all_klines, time)
+                    gmma_x = gmma_cross(all_emas, current_close)
+                    compression_shorts = gmma_compression(all_emas, current_close, ema_type=EMAS_G)
+                    compression_longs = gmma_compression(all_emas, current_close)
+                    if gmma_x \
+                        or compression_longs \
+                        or compression_shorts:
+                        gmma_calls.append(market)
+                        print('gmma\'s are crossing each other recently or a compression occurs!')
 
-                current_close = all_klines[-1].close_price
+                if incl_macd:
+                    macd_vect = plot_macd(axs, all_klines, time)
                 axs[0].text(time[-1], current_close, f'{current_close:.8f}', fontsize=12)
                 axs[0].set_xlabel('time', fontsize=14)
                 axs[0].set_title(f'{market} market', fontsize=20)
 
+                if incl_rsi:
+                    rsi_val = plot_rsi(axs, all_klines, time)
                 # plt.show() # optional
-                fig.savefig(f'plots//{market}_{tf}.png', bbox_inches='tight')
+                if save_fig:
+                    fig.savefig(f'plots//{market}_{tf}.png', bbox_inches='tight')
+
                 plt.cla()
                 plt.close()
 
                 # optional - inserts data to sql_database
                 if insert_data:
+                    rsi(all_klines)
+                    ema_12 = ema(all_klines, 12)
+                    ema_26 = ema(all_klines, 26)
+                    ema_50 = ema(all_klines, 50)
+                    ema_200 = ema(all_klines, 200)
+                    sh_tight, long_tight, gmma_width = gmma_tightness(all_klines)
+                    cloud_th = all_clouds(all_klines, senkou_a, senkou_b, DISPLACEMENT)
+                    indicators = np.c_[ema_12[-len(ema_200):], ema_26[-len(ema_200):],
+                                       ema_50[-len(ema_200):], ema_200[-len(ema_200):],
+                                       sh_tight[-len(ema_200):], long_tight[-len(ema_200):],
+                                       gmma_width[-len(ema_200):],
+                                       senkou_a[-len(ema_200):], senkou_b[-len(ema_200):],
+                                       d_senkou[-len(ema_200):], macd_vect[-len(ema_200):],
+                                       rsi_val[-len(ema_200):], cloud_th[-len(ema_200):]]
+                    print(indicators)
                     db_name = f'{market}_{tf_t}'.lower()
-                    insert_klines(all_klines, db_name)
+                    insert_klines(all_klines, db_name, indicators)
+                print('\n')
 
+
+#sample input
+markets_filtered = get_coins_list()
+gmma_calls = []
+
+# part purely for future decisions ;)
+# a = 'dnt, key, ncash, adx, dlt, oax, gas, gnt, knc, lun, sngls, storj, trx, ins, via, vib'
+# b = a.split(', ')
+# print(b)
+# markets_filtered = list(map(lambda x: x.upper()+'BTC', b))
+# print(moon_coinzs)
+# coinz = ['ADX', 'AMB', 'ARN', 'BQX', 'BRD', 'BTG', 'DASH', 'DGD', 'EVX', 'FUN', 'IOST', 'NANO', 'OAX',
+#          'POWR', 'REQ', 'SALT', 'STRAT', 'VIBE', 'ZIL']
+
+# # uncomment if you want to have a specific coin plot only
+idx = markets_filtered.index('KEYBTC')
+markets_filtered = get_coins_list()[idx:idx+1]
+
+# optional - todo - focusing first on the calls - will later implement a SQLdb<>program_data exchange
+create_markets_databases(markets_filtered, TIME_FRAME)
 
 # main function call
-get_klines(markets_filtered, time_frame, time_interval, include_vol=True)
-print(calls_list)
+get_klines(markets_filtered, include_vol=True, incl_macd=True)
 
-# move called coin plots to seperate folders
-organize_calls(calls_list)
+# filter calls
+print(f'Cloud calls: {cloud_calls}')
+print(f'GMMA calls: {gmma_calls}')
+
+calls_filtered = set(cloud_calls).intersection(set(gmma_calls))
+# gen_calls = (call for call in cloud_calls if call in gmma_calls)
+# calls_filtered = [call for call in gen_calls]
+
+print(f'Calls filtered: {calls_filtered}')
+
+# move called coin plots to separate folders
+organize_calls(calls_filtered)
+organize_calls(cloud_calls, add='Cloud')
+organize_calls(gmma_calls, add='GMMA')
+
 
 # optional - create excel file containing prices for called coins
-update_excel('coins.xlsx', calls_list)
-
+# update_excel('coins.xlsx', calls_filtered)
+#
 # performance check
-t_then = datetime.now()
-elapsed_time = t_then - t_now
-print(f'It took {elapsed_time.total_seconds()} seconds to run this program')
+t1 = datetime.now()
+dt_total = t1 - t0
+print(f'It took {dt_total.total_seconds()} seconds to run this program')
 
 
 
