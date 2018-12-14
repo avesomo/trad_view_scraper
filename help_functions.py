@@ -29,7 +29,7 @@ class Kline:
         self.no_trades = int(no_trades)
         self.taker_base = float(taker_base)
         self.taker_quote = float(taker_quote)
-        self.ignore_val = int(ignore_val)
+        self.ignore_val = int(float(ignore_val))
         self.high_price = float(high_price)
         self.open_t = open_time
         self.open_price = float(open_price)
@@ -431,6 +431,7 @@ def macd(klines, per1=12, per2=26, per3=9):
 
 def organize_calls(calls, dirname=time.strftime("%Y-%m-%d %H_%M"), add=None):
     # function moves called coins to seperate dirnames
+    # todo - only create the dir if actual calls exist
     if calls:
         path = os.getcwd()
         # current_time = time.strftime("%Y-%m-%d %H_%M")

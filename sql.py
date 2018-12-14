@@ -80,7 +80,6 @@ def insert_klines(klines, db_name, indicators):
     conn = None
     transformed = [i.get_attributes() for i in klines]
     values = np.c_[transformed[-len(indicators):], indicators]
-    print(f'vals: {values}')
     try:
         params = config()
         conn = psycopg2.connect(**params)
