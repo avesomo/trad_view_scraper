@@ -52,9 +52,14 @@ def get_coins_list():
 
 
 def plot_ichimoku(klines, time, axs, market, conv_period=20, base_period=60, span2period=120, displacement=DISPLACEMENT,
-                  plot_lines=False, plot_cloud=False):
+                  plot_lines=True, plot_cloud=True):
     dist = time[1] - time[0]
     time_new = add_time(time, dist, displacement)
+
+    try:
+        axes = axs[0]
+    except:
+        axes = axs
 
     # defining ichimoku values
     try:
@@ -80,24 +85,24 @@ def plot_ichimoku(klines, time, axs, market, conv_period=20, base_period=60, spa
 
     # plotting lines - optional
     if plot_lines:
-        axs[0].plot(time[:len(chikou)], chikou, '-',
+        axes.plot(time[:len(chikou)], chikou, '-',
                     linewidth=1, markersize=1, color='g')
-        axs[0].plot(time[-len(conversion_line):], conversion_line, '-',
+        axes.plot(time[-len(conversion_line):], conversion_line, '-',
                     linewidth=1, markersize=1, color='b')
-        axs[0].plot(time[-len(base_line):], base_line, '-',
+        axes.plot(time[-len(base_line):], base_line, '-',
                     linewidth=1, markersize=1, color='r')
-        axs[0].plot(time[:len(chikou)], chikou, '-',
+        axes.plot(time[:len(chikou)], chikou, '-',
                     linewidth=1, markersize=1, color='g')
 
     # plotting cloud
     if plot_cloud:
-        axs[0].fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b,
+        axes.fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b,
                             where=is_greater, color='g', alpha=0.1)
-        axs[0].fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b, where=~is_greater,
+        axes.fill_between(time_a, senkou_a[-len(senkou_b):], senkou_b, where=~is_greater,
                             color='r', alpha=0.1)
-        axs[0].plot(time_new[-len(senkou_a):], senkou_a, '-',
+        axes.plot(time_new[-len(senkou_a):], senkou_a, '-',
                     linewidth=0.5, markersize=1, color='g')
-        axs[0].plot(time_new[-len(senkou_b):], senkou_b, '-',
+        axes.plot(time_new[-len(senkou_b):], senkou_b, '-',
                     linewidth=0.5, markersize=1, color='r')
 
     cross = cloud_cross(senkou_a, senkou_b, time_a, axs, displacement)
@@ -138,13 +143,19 @@ def plot_wicks(klines, axs, time_val):
     high_price = np.array(high_price)
     open_price = np.array(open_price)
     close_price = np.array(close_price)
-    axs[0].vlines(time_np[bool_filter], low_price[bool_filter], high_price[bool_filter],
+
+    try:
+        axes = axs[0]
+    except:
+        axes = axs
+
+    axes.vlines(time_np[bool_filter], low_price[bool_filter], high_price[bool_filter],
                   color='r', lw=1, zorder=5)
-    axs[0].vlines(time_np[bool_filter], open_price[bool_filter], close_price[bool_filter],
+    axes.vlines(time_np[bool_filter], open_price[bool_filter], close_price[bool_filter],
                   color='r', lw=7, zorder=10)
-    axs[0].vlines(time_np[~bool_filter], low_price[~bool_filter], high_price[~bool_filter],
+    axes.vlines(time_np[~bool_filter], low_price[~bool_filter], high_price[~bool_filter],
                   color='g', lw=1, zorder=5)
-    axs[0].vlines(time_np[~bool_filter], open_price[~bool_filter], close_price[~bool_filter],
+    axes.vlines(time_np[~bool_filter], open_price[~bool_filter], close_price[~bool_filter],
                   color='g', lw=7, zorder=10)
     return bool_filter
 
@@ -450,8 +461,12 @@ def organize_calls(calls, dirname=time.strftime("%Y-%m-%d %H_%M"), add=None):
                 print(f'{dir_name} directory created.')
             for f in files:
                 if f.startswith(f'{coin}'):
-                    shutil.move(f'{f}', os.path.join(dir_name, f))
-                    print(f'File {f} moved to {dir_name} directory.')
+                    try:
+                        shutil.move(f'{f}', os.path.join(dir_name, f))
+                        print(f'File {f} moved to {dir_name} directory.')
+                    except FileNotFoundError as e:
+                        print(e)
+                        continue
         os.chdir(path)
 
 
@@ -542,7 +557,6 @@ def update_excel(filename, coin_list):
     coins = {key.value: value for value, key in enumerate(list(ws.rows)[0], 2)}
     i = 1
     for coin in coin_list:
-
         bin_data = list(client.get_historical_klines_generator(symbol=f'{coin}',
                                                                interval=getattr(Client, time_dict['4H']),
                                                                start_str='8 hours ago UTC'))[-1]

@@ -10,11 +10,11 @@ from datetime import datetime
 t0 = datetime.now()
 # todo-if too short interval the program hangs itself (not enough information to plot ichi cloud
 TIME_FRAME = ('4H', )
-TIME_INTERVAL = ('4 month ago UTC', )
+TIME_INTERVAL = ('1 month ago UTC', )
 
 
 def get_klines(markets, frame=TIME_FRAME, interval=TIME_INTERVAL,
-               include_vol=True, insert_data=True, gmma=True,
+               include_vol=True, insert_data=False, gmma=True,
                incl_macd=True, save_fig=True, incl_rsi=True):
     for tf in frame:
         for ti in interval:
@@ -31,10 +31,15 @@ def get_klines(markets, frame=TIME_FRAME, interval=TIME_INTERVAL,
                 time_all = get_time(all_klines)
                 print(f'{market}_{tf} data has been generated.')
                 subplots_no = np.sum([include_vol, incl_macd, incl_rsi, 1])
+                ratios = [5]
+                for _ in range(subplots_no):
+                    if _ > 0:
+                        ratios.append(1)
+
                 # todo-number of drawings is hardcoded now - rework
                 if include_vol:
                     fig, axs = plt.subplots(subplots_no, 1, figsize=(len(all_klines)/8, 10),
-                                                  gridspec_kw ={'height_ratios': [5, 1, 1, 1]},
+                                                  gridspec_kw ={'height_ratios': ratios},
                                                   sharex=True)
                 else:
                     fig, axs = plt.subplots(1, 1, figsize=(len(all_klines)/8, 10))
@@ -72,9 +77,15 @@ def get_klines(markets, frame=TIME_FRAME, interval=TIME_INTERVAL,
 
                 if incl_macd:
                     macd_vect = plot_macd(axs, all_klines, time_all)
-                axs[0].text(time_all[-1], current_close, f'{current_close:.8f}', fontsize=12)
-                axs[0].set_xlabel('time_all', fontsize=14)
-                axs[0].set_title(f'{market} market', fontsize=20)
+
+                if subplots_no > 1:
+                    axs[0].text(time_all[-1], current_close, f'{current_close:.8f}', fontsize=12)
+                    axs[0].set_xlabel('time_all', fontsize=14)
+                    axs[0].set_title(f'{market} market', fontsize=20)
+                else:
+                    axs.text(time_all[-1], current_close, f'{current_close:.8f}', fontsize=12)
+                    axs.set_xlabel('time_all', fontsize=14)
+                    axs.set_title(f'{market} market', fontsize=20)
 
                 if incl_rsi:
                     rsi_val = plot_rsi(axs, all_klines, time_all)
@@ -125,14 +136,14 @@ gmma_calls = []
 #          'POWR', 'REQ', 'SALT', 'STRAT', 'VIBE', 'ZIL']
 
 # # uncomment if you want to have a specific coin plot only
-idx = markets_filtered.index('USDCBTC')
-markets_filtered = get_coins_list()[idx:]
+idx = markets_filtered.index('NCASHBTC')
+markets_filtered = get_coins_list()[idx:idx+10]
 
 # optional - todo - focusing first on the calls - will later implement a SQLdb<>program_data exchange
 create_markets_databases(markets_filtered, TIME_FRAME)
 
 # main function call
-get_klines(markets_filtered, include_vol=True, incl_macd=True)
+get_klines(markets_filtered)
 
 # filter calls
 print(f'Cloud calls: {cloud_calls}')
