@@ -9,13 +9,13 @@ from datetime import datetime
 
 t0 = datetime.now()
 # todo-if too short interval the program hangs itself (not enough information to plot ichi cloud
-TIME_FRAME = ('4H', )
-TIME_INTERVAL = ('1 month ago UTC', )
+TIME_FRAME = ('1H', )
+TIME_INTERVAL = ('18 month ago UTC', )
 
 
 def get_klines(markets, frame=TIME_FRAME, interval=TIME_INTERVAL,
-               include_vol=True, insert_data=False, gmma=True,
-               incl_macd=True, save_fig=True, incl_rsi=True):
+               include_vol=True, insert_data=True, gmma=True,
+               incl_macd=True, save_fig=False, incl_rsi=True):
     for tf in frame:
         for ti in interval:
             for market in markets:
@@ -136,8 +136,8 @@ gmma_calls = []
 #          'POWR', 'REQ', 'SALT', 'STRAT', 'VIBE', 'ZIL']
 
 # # uncomment if you want to have a specific coin plot only
-idx = markets_filtered.index('NCASHBTC')
-markets_filtered = get_coins_list()[idx:idx+10]
+idx = markets_filtered.index('NEOBTC')
+markets_filtered = get_coins_list()[idx:idx+1]
 
 # optional - todo - focusing first on the calls - will later implement a SQLdb<>program_data exchange
 create_markets_databases(markets_filtered, TIME_FRAME)
