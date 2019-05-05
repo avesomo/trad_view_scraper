@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb241ee5-2fe2-4a99-b20c-09812e3d5af3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bin_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin_scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ADXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/AIONBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/AMBBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ARDRBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ARKBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ARNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ASTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BATBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BCCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BCDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BCPTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BLZBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BNBBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BQXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BRDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/BTGBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/DASHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/DENTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/DGDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ENGBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ENJBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/EOSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ETHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/EVXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/FUNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/GNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/GRSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/GTOBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/HCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/HOTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ICXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/IOSTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/LOOMBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/LRCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/LUNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/MCOBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/MFTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/MTHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/NANOBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/NAVBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/NCASHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/NPXSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/NULSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/OAXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/OMGBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/PAXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/POABTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/POLYBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/POWRBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/PPTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/QSPBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/RDNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/REQBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/RLCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/SALTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/SNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/STORJBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/STRATBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/SYSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/TUSDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/VIBBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/VIBEBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/XLMBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/XMRBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/XRPBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ZECBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ZENBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 17_09/ZILBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ADXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/AIONBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/AMBBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/APPCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ARDRBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ARKBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ARNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ASTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BATBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BCCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BCDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BCPTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BLZBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BNBBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BQXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BRDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/BTGBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/CLOAKBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/DASHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/DENTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ENGBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ENJBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/EOSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ETHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/EVXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/FUNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/GNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/GTOBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/GVTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/HCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/HOTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ICXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/INSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/IOSTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/IOTABTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/LOOMBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/LRCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/LUNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/MCOBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/MTHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/NANOBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/NASBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/NAVBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/NCASHBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/NPXSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/NULSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/OAXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/OMGBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ONTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/PAXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/POABTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/POLYBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/POWRBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/PPTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/QLCBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/QSPBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/QTUMBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/RDNBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/REQBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/SALTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/SNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/STORJBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/STRATBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/SYSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/TNTBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/TRXBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/TUSDBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/VIBBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/VIBEBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/WINGSBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/XLMBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/XMRBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/XRPBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ZECBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ZENBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/2018-11-01 22_35/ZILBTC_4H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/coins.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/program.py" beforeDir="false" afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/TVscraper$sql.coverage" NAME="sql Coverage Results" MODIFIED="1539974100338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TVscraper$test.coverage" NAME="test Coverage Results" MODIFIED="1541313783499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TVscraper$binance.coverage" NAME="binance Coverage Results" MODIFIED="1539204488376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TVscraper$program.coverage" NAME="program Coverage Results" MODIFIED="1542400130033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TVscraper$bin_scraper.coverage" NAME="bin_scraper Coverage Results" MODIFIED="1547387984844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="TVscraper">
+      <favorite_root url="file://$PROJECT_DIR$/bin_scraper.py" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5950135">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/crypto/predictions/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="76">
+                  <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/bin_scraper.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2375">
+                  <caret line="131" column="10" selection-start-line="131" selection-start-column="10" selection-end-line="131" selection-end-column="10" />
+                  <folding>
+                    <element signature="e#0#28#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/bot.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret selection-end-line="5" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#0#33#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ws_trades.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="342">
+                  <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#0#33#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ws_aggtrades.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="316">
+                  <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/database.ini">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="76">
+                  <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="266">
+                  <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/program.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1824">
+                  <caret line="100" column="55" selection-start-line="100" selection-start-column="55" selection-end-line="100" selection-end-column="55" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/help_functions.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="86">
+                  <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="76">
+                  <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lstm.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1881">
+                  <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sql.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="114">
+                  <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                    <marker date="1544637814695" expanded="true" signature="3233:3234" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>emaS_R</find>
+      <find>insert</find>
+      <find>insert_klines</find>
+      <find>dateti</find>
+      <find>plot_cloud</find>
+      <find>ema</find>
+      <find>sma</find>
+      <find>sh</find>
+      <find>ichimoku</find>
+      <find>generating</find>
+      <find>cloud_thickness</find>
+      <find>plot_macd</find>
+      <find>macd</find>
+      <find>macd type</find>
+      <find>tightness</find>
+      <find>rsi</find>
+      <find>print</find>
+      <find>TIME_FRA</find>
+      <find>get_coins</find>
+      <find>t</find>
+      <find>time</find>
+      <find>organize</find>
+      <find>vals:</find>
+      <find>%</find>
+      <find>.2f</find>
+      <find>axs[0]</find>
+      <find>generated</find>
+      <find>orgANI</find>
+      <find>organiz</find>
+      <find>cloud</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>ax1</replace>
+      <replace>w.</replace>
+      <replace>axs[0]</replace>
+      <replace>axs[1]</replace>
+      <replace>time_np[is_greater]</replace>
+      <replace>low_price[is_greater]</replace>
+      <replace>bool_filter</replace>
+      <replace>point</replace>
+      <replace>is_close</replace>
+      <replace>calls_list</replace>
+      <replace>time_np[</replace>
+      <replace>plot_ichimoku</replace>
+      <replace>is_thin</replace>
+      <replace>cloud_calls</replace>
+      <replace>dirname</replace>
+      <replace>ema_type</replace>
+      <replace>ema_type=</replace>
+      <replace>dt_total</replace>
+      <replace>t0</replace>
+      <replace>TIME_INTERVAL</replace>
+      <replace>TIME_FRAME</replace>
+      <replace>DISPLACEMENT</replace>
+      <replace>counter</replace>
+      <replace>sma</replace>
+      <replace>ema</replace>
+      <replace>EMAS_G</replace>
+      <replace>EMAS_R</replace>
+      <replace>long</replace>
+      <replace>time_all</replace>
+      <replace>axes</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/binance.py" />
+        <option value="$PROJECT_DIR$/tv_scraper_example.config" />
+        <option value="$PROJECT_DIR$/tv_scraper.config" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/database.ini" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/config_example.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/gecko_scraper.py" />
+        <option value="$PROJECT_DIR$/json2.py" />
+        <option value="$PROJECT_DIR$/crypto/predictions/models.py" />
+        <option value="$PROJECT_DIR$/sql.py" />
+        <option value="$PROJECT_DIR$/help_functions.py" />
+        <option value="$PROJECT_DIR$/lstm.py" />
+        <option value="$PROJECT_DIR$/bin_scraper.py" />
+        <option value="$PROJECT_DIR$/program.py" />
+        <option value="$PROJECT_DIR$/bot.py" />
+        <option value="$PROJECT_DIR$/websocket.py" />
+        <option value="$PROJECT_DIR$/ws_aggtrades.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="67" />
+    <option name="y" value="32" />
+    <option name="width" value="927" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TVscraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TVscraper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TVscraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Python_scripts_RR/medicover_visits_check" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="C:\Users\Avesomo\Desktop\TVscraper" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.ws_aggtrades">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="TVscraper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="bin_scraper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TVscraper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin_scraper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TVscraper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="program" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TVscraper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/program.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="websocket" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TVscraper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ws_trades.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ws_aggtrades" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TVscraper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ws_aggtrades.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.bin_scraper" />
+      <item itemvalue="Python.bot" />
+      <item itemvalue="Python.program" />
+      <item itemvalue="Python.websocket" />
+      <item itemvalue="Python.ws_aggtrades" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.ws_aggtrades" />
+        <item itemvalue="Python.websocket" />
+        <item itemvalue="Python.bot" />
+        <item itemvalue="Python.program" />
+        <item itemvalue="Python.bin_scraper" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb241ee5-2fe2-4a99-b20c-09812e3d5af3" name="Default Changelist" comment="" />
+      <created>1539196538182</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539196538182</updated>
+      <workItem from="1542821766813" duration="14968000" />
+      <workItem from="1542910526828" duration="14654000" />
+      <workItem from="1542995923145" duration="157000" />
+      <workItem from="1542996256824" duration="602000" />
+      <workItem from="1543001241633" duration="7606000" />
+      <workItem from="1543047770548" duration="20000" />
+      <workItem from="1543050101269" duration="2390000" />
+      <workItem from="1543085639104" duration="1819000" />
+      <workItem from="1543133346840" duration="903000" />
+      <workItem from="1543258452966" duration="159000" />
+      <workItem from="1543261097936" duration="598000" />
+      <workItem from="1543347398630" duration="599000" />
+      <workItem from="1543429907565" duration="4555000" />
+      <workItem from="1543608927975" duration="116000" />
+      <workItem from="1543777150470" duration="52000" />
+      <workItem from="1543782713734" duration="1524000" />
+      <workItem from="1543787586251" duration="2068000" />
+      <workItem from="1543843076338" duration="1201000" />
+      <workItem from="1543859943070" duration="314000" />
+      <workItem from="1543860720374" duration="1662000" />
+      <workItem from="1543869586817" duration="167000" />
+      <workItem from="1543876814185" duration="849000" />
+      <workItem from="1543920729002" duration="599000" />
+      <workItem from="1544562680835" duration="1241000" />
+      <workItem from="1544611524887" duration="3145000" />
+      <workItem from="1544622328033" duration="599000" />
+      <workItem from="1544637509113" duration="903000" />
+      <workItem from="1544696335371" duration="6569000" />
+      <workItem from="1544748501067" duration="240000" />
+      <workItem from="1544787285537" duration="623000" />
+      <workItem from="1545068146513" duration="3376000" />
+      <workItem from="1545247775873" duration="2680000" />
+      <workItem from="1545317819835" duration="599000" />
+      <workItem from="1545336936592" duration="342000" />
+      <workItem from="1545908237849" duration="2459000" />
+      <workItem from="1545950016793" duration="272000" />
+      <workItem from="1546084586295" duration="736000" />
+      <workItem from="1546188394393" duration="90000" />
+      <workItem from="1546188893742" duration="1995000" />
+      <workItem from="1546267939379" duration="2433000" />
+      <workItem from="1546552282782" duration="498000" />
+      <workItem from="1546971415827" duration="600000" />
+      <workItem from="1546978618012" duration="255000" />
+      <workItem from="1546982750375" duration="2252000" />
+      <workItem from="1547387758970" duration="1078000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="90567000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="32" width="1853" height="1048" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.59343797" visible="true" weight="0.18907104" />
+      <window_info id="Structure" order="1" sideWeight="0.40656206" side_tool="true" weight="0.2434975" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32991382" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.63807416" weight="0.32864866" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.64969563" weight="0.3743199" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6604005" weight="0.37513512" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49325705" weight="0.32703003" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.35030437" side_tool="true" weight="0.32216215" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.49775234" weight="0.3214683" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.63833266" visible="true" weight="0.3155604" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.716656" weight="0.32681867" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.9522124" weight="0.31760362" />
+      <window_info anchor="right" x="0" y="0" width="274" height="632" id="Documentation" order="4" sideWeight="0.04778761" side_tool="true" weight="1.0" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49914822" weight="0.32943794" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/plots/AEBTC_12H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/IOTABTC_12H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/NCASHBTC_12H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/ADABTC_12H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/ZILBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/NCASHBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/OAXBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-02 16_31 Cloud/BQXBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/ADXBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/AIONBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/ADABTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/AMBBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/ARDRBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/ASTBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/BCCBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/BCDBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/BCPTBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22 GMMA/ETCBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22/NCASHBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-03 00_22 GMMA/KEYBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/data_file.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-04 00_40 GMMA/DLTBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-04 00_40 GMMA/DNTBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-04 00_44 GMMA/LUNBTC_1D.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-04 00_44 GMMA/NCASHBTC_1D.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-04 00_40 GMMA/OAXBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/filtered_data_file.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-11 18_03/ADXBTC_1D.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-11 18_03/ARKBTC_1D.png" />
+    <entry file="file://$PROJECT_DIR$/plots/2018-11-11 18_03/BRDBTC_1D.png" />
+    <entry file="file://$PROJECT_DIR$/crypto/Download errors.txt" />
+    <entry file="file://$PROJECT_DIR$/json2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crypto/tests.py.txt" />
+    <entry file="file://$PROJECT_DIR$/crypto/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crypto/__init__.py.txt" />
+    <entry file="file://$PROJECT_DIR$/crypto/predictions/templates/predictions/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1392">
+          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/2018-12-19 20_31/AIONBTC_4H.png" />
+    <entry file="file://$PROJECT_DIR$/crypto/predictions/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin_scraper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2375">
+          <caret line="131" column="10" selection-start-line="131" selection-start-column="10" selection-end-line="131" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="5" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ws_trades.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1824">
+          <caret line="100" column="55" selection-start-line="100" selection-start-column="55" selection-end-line="100" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/help_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1544637814695" expanded="true" signature="3233:3234" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ws_aggtrades.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

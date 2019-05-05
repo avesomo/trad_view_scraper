@@ -28,33 +28,37 @@ TICKERS = {"symbols": {"tickers": ["BITFINEX:REQBTC"], "query": {"types": []}},
                        "Pivot.M.Demark.R1|240"]}
 AVAIL_INTERVALS = ['|1', '|5', '|15', '|60', '|240', '', '|1W']
 TIME_FRAMES_TV = ['1', '5', '15', '60', '240', '1D', '1W']
-
-# data formatting
-ticks = {TICKERS['columns'].index(ticker): ticker.strip('|240') for ticker in TICKERS['columns']}
-keys_int = {key: tick for key, tick in zip(AVAIL_INTERVALS, TIME_FRAMES_TV)}
-ticks_dict = {keys_int[i]: {k: v+i for k, v in ticks.items()} for i in AVAIL_INTERVALS}
+KEYS_INT = {key: tick for key, tick in zip(TIME_FRAMES_TV, AVAIL_INTERVALS)}
+headers = {'User-Agent': 'Mozilla/5.0'}
+url = "https://scanner.tradingview.com/crypto/scan"
 
 
-def get_ticks(markets, tickers_indexes, time_frames):
+def create_tick_dict(timeframe):
+    ticks = {ticker.replace('|240', ''): (ticker.replace('|240', '')+KEYS_INT[timeframe], idx)
+             for idx, ticker in enumerate(TICKERS['columns'])}
+    return ticks
+
+
+def get_ticks(markets, tickers, time_frames, print_df=False):
     result = {}
     final_dict = {}
     array_like = []
     for_removal = []
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    url = "https://scanner.tradingview.com/crypto/scan"
 
     for market in markets:
         try:
             for timeframe in time_frames:
+                ticks_dict = create_tick_dict(timeframe)
                 payload = {
                     "symbols": {
                         "tickers": [f"BINANCE:{market}"],
                         "query": {"types": []}
                     },
-                    "columns": [ticks_dict[timeframe][i] for i in tickers_indexes]
+                    "columns": [ticks_dict[tick][0] for tick in tickers]
                 }
                 resp = requests.post(url, headers=headers, data=json.dumps(payload)).json()
-                res = [(ticks[i], resp["data"][0]["d"][i]) for i in tickers_indexes]
+                print(resp)
+                res = [(tick, resp["data"][0]["d"][idx]) for idx, tick in enumerate(tickers)]
                 # print(market, timeframe, res)
                 for i in res:
                     array_like.append(i[1])
@@ -69,18 +73,39 @@ def get_ticks(markets, tickers_indexes, time_frames):
     for i in for_removal:
         markets.remove(i)
 
-    columns = [ticks[i] for i in tickers_indexes]
-    index = pd.MultiIndex.from_product([markets, time_frames],
-                                       names=['Market', 'TimeFrame'])
-    df = pd.DataFrame(np.array(array_like).reshape(len(time_frames)*len(markets), len(columns)),
-                      index=index,
-                      columns=columns)
-    return df
+    if print_df:
+        index = pd.MultiIndex.from_product([markets, time_frames],
+                                           names=['Market', 'TimeFrame'])
+        df = pd.DataFrame(np.array(array_like).reshape(len(time_frames)*len(markets), len(tickers)),
+                          index=index,
+                          columns=tickers)
+        return df
+    else:
+        return final_dict
 
 
-# sample input
-tickers_indexes = [0, 1, 2]
-time_frames = ['240', '15']
-markets = get_coins_list()[:20]
-df_ticks = get_ticks(markets, tickers_indexes, time_frames)
-print(df_ticks)
+def get_tick(tick_names, market, timeframe, exchange="BINANCE"):
+    try:
+        payload = {
+            "symbols": {
+                "tickers": [f"{exchange}:{market}"],
+                "query": {"types": []}
+            },
+            "columns": [tick_name+KEYS_INT[timeframe]
+                        for tick_name in tick_names]
+        }
+        resp = requests.post(url, headers=headers, data=json.dumps(payload)).json()
+        res = (resp["data"][0]["d"][i]
+               for i in range(len(resp["data"][0]["d"])))
+    except IndexError:
+        return print('Current market does not exist on this exchange')
+    return res
+
+
+# # sample input
+# tickers = ['SMA100', 'EMA100']
+# time_frames = ['240', '1D']
+# # 1D-EMA60
+# markets = get_coins_list()[:20]
+# df_ticks = get_ticks(markets, tickers, time_frames)
+# print(df_ticks)
